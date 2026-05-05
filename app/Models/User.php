@@ -18,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'email_verified_at',
         'profile_photo_path',
+        'google_id',
     ];
 
     protected $hidden = [
