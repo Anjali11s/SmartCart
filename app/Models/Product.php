@@ -22,4 +22,15 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'seller_id');
     }
+    
+     // Image URL accessor
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : 'https://placehold.co/400x300?text=No+Image';
+    }
+
+    public function isInStock()
+    {
+        return $this->quantity > 0;
+    }
 }

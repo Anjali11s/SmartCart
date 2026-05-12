@@ -98,6 +98,30 @@
             transform: translateY(-2px);
         }
         
+        /* Google Button */
+        .btn-google {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            color: #4b5563 !important;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-google:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .btn-google img {
+            width: 18px;
+            height: 18px;
+        }
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -164,6 +188,31 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .divider::before {
+            margin-right: 1rem;
+        }
+        
+        .divider::after {
+            margin-left: 1rem;
         }
         
         .btn-primary {
@@ -207,7 +256,7 @@
             transform: translateY(-2px);
         }
         
-        /* Animated Aesthetic Design - No Cart, Just Beautiful Animation */
+        /* Animated Aesthetic Design */
         .hero-image {
             flex: 1;
             min-width: 300px;
@@ -226,7 +275,6 @@
             align-items: center;
         }
         
-        /* Main Gradient Circle */
         .gradient-circle {
             width: 280px;
             height: 280px;
@@ -249,7 +297,6 @@
             }
         }
         
-        /* Floating Orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -319,7 +366,6 @@
             }
         }
         
-        /* Rotating Ring */
         .ring {
             position: absolute;
             width: 320px;
@@ -345,7 +391,6 @@
             }
         }
         
-        /* Center Icons */
         .center-icon {
             position: absolute;
             z-index: 3;
@@ -363,7 +408,6 @@
             }
         }
         
-        /* Stats Section */
         .stats-section {
             padding: 4rem 5%;
             background: rgba(255, 255, 255, 0.95);
@@ -414,7 +458,6 @@
             font-weight: 500;
         }
         
-        /* How It Works Section */
         .how-it-works {
             padding: 4rem 5%;
             background: white;
@@ -484,7 +527,6 @@
             line-height: 1.5;
         }
         
-        /* Footer */
         .footer {
             background: #1f2937;
             color: #9ca3af;
@@ -494,7 +536,6 @@
             margin-top: 3rem;
         }
         
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -616,25 +657,27 @@
                     </a>
                 @endguest
             </div>
+            
+            <!-- Google Login Button - Added -->
+            @guest
+            <div class="divider">or</div>
+            <a href="{{ route('auth.google') }}" class="btn-google" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+                Continue with Google
+            </a>
+            @endguest
         </div>
         
         <div class="hero-image">
             <div class="animation-container">
-                <!-- Rotating Rings -->
                 <div class="ring"></div>
                 <div class="ring ring-2"></div>
-                
-                <!-- Main Gradient Circle -->
                 <div class="gradient-circle"></div>
-                
-                <!-- Floating Orbs -->
                 <div class="orb orb-1"></div>
                 <div class="orb orb-2"></div>
                 <div class="orb orb-3"></div>
                 <div class="orb orb-4"></div>
                 <div class="orb orb-5"></div>
-                
-                <!-- Center Icon -->
                 <div class="center-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
