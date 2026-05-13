@@ -77,4 +77,8 @@ class User extends Authenticatable implements MustVerifyEmail
         
         return 'https://ui-avatars.com/api/?background=6366f1&color=fff&name=' . urlencode($this->name);
     }
+    public function shippingAddresses()
+    {
+        return $this->hasMany(ShippingAddress::class);
+    }
 }

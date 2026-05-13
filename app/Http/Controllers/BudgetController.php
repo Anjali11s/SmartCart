@@ -156,18 +156,27 @@ class BudgetController extends Controller
             ];
         }
         
-        if ($cartTotal > $budget->amount) {
+        // Include monthly spent
+        $monthlySpent = $user->orders()
+            ->where('order_status', '!=', 'cancelled')
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->sum('total_amount');
+        
+        $remainingBudget = $budget->amount - $monthlySpent;
+        
+        if ($cartTotal > $remainingBudget) {
             return [
                 'allowed' => false,
                 'error' => "❌ Cannot checkout! Your cart total (₹" . number_format($cartTotal) . 
-                          ") exceeds your budget (₹" . number_format($budget->amount) . 
-                          "). Please remove items or increase your budget."
+                        ") exceeds your remaining budget (₹" . number_format($remainingBudget) . 
+                        "). You have already spent ₹" . number_format($monthlySpent) . " this month."
             ];
         }
         
         return [
             'allowed' => true,
-            'info' => "✅ Within budget! Remaining: ₹" . number_format($budget->amount - $cartTotal)
+            'info' => "✅ Within budget! Remaining: ₹" . number_format($remainingBudget - $cartTotal)
         ];
     }
 

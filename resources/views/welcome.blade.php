@@ -658,10 +658,10 @@
                 @endguest
             </div>
             
-            <!-- Google Login Button - Added -->
+            <!-- Google Login Button -->
             @guest
             <div class="divider">or</div>
-            <a href="{{ route('auth.google') }}" class="btn-google" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <a href="{{ route('login.google') }}" class="btn-google" style="display: flex; align-items: center; justify-content: center; width: 100%;">
                 <img src="https://www.google.com/favicon.ico" alt="Google">
                 Continue with Google
             </a>
