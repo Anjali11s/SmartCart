@@ -79,6 +79,19 @@
                     <i class="fas fa-qrcode text-2xl text-indigo-600"></i>
                 </div>
             </div>
+            
+            <!-- Razorpay Option - NEW -->
+            <div class="payment-method border-2 rounded-lg p-4 mb-3 cursor-pointer transition" 
+                 onclick="selectPayment('razorpay')" data-payment="razorpay">
+                <div class="flex items-center gap-3">
+                    <input type="radio" name="payment_method" value="razorpay" id="razorpay" class="w-4 h-4">
+                    <label for="razorpay" class="flex-1 cursor-pointer">
+                        <strong>Razorpay (Card/UPI/Netbanking)</strong>
+                        <div class="text-sm text-gray-500">Instant online payment</div>
+                    </label>
+                    <i class="fas fa-credit-card text-2xl text-indigo-600"></i>
+                </div>
+            </div>
         </div>
     </div>
     

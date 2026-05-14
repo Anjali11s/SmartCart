@@ -67,7 +67,7 @@ Route::get('/email/verify', function () {
 Route::get('login/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('login.google.callback');
 
-// Profile Routes
+// Profile Routes (auth required)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -98,7 +98,7 @@ Route::middleware(['auth'])->prefix('budget')->group(function () {
 Route::resource('addresses', AddressController::class)->middleware(['auth']);
 Route::post('/addresses/{address}/set-default', [AddressController::class, 'setDefault'])->name('addresses.set-default')->middleware(['auth']);
 
-// Order Routes
+// Order Routes (all auth required)
 Route::middleware(['auth'])->prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
@@ -109,6 +109,9 @@ Route::middleware(['auth'])->prefix('orders')->group(function () {
     Route::post('/{order}/return', [OrderController::class, 'requestReturn'])->name('orders.return');
     Route::get('/{order}/payment', [OrderController::class, 'payment'])->name('orders.payment');
     Route::post('/{order}/payment-proof', [OrderController::class, 'uploadPaymentProof'])->name('orders.payment-proof');
+    
+    // Razorpay payment verification (must be inside auth and correct prefix)
+    Route::post('/payment/verify', [OrderController::class, 'verifyPayment'])->name('orders.payment.verify');
 });
 
 // Seller Routes

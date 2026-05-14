@@ -29,7 +29,11 @@ class Order extends Model
         'refund_status',
         'shipping_phone',
         'shipping_address_text',
-        'payment_screenshot'
+        'payment_screenshot',
+        'razorpay_order_id',    // add
+    'razorpay_payment_id',  // add
+    'razorpay_signature',   // add
+
     ];
 
     protected $casts = [
